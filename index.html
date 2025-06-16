@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti, Con Amor</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Pacifico&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sección 1: Portada con Parallax -->
+    <section id="portada" class="parallax">
+        <div class="parallax-bg" style="background-image: url('imagenes/1.jpg');"></div>
+        <div class="contenido">
+            <h1 id="titulo-principal">Para <span class="nombre">Mi Amor</span>, con amor</h1>
+            <p class="subtitulo">Un viaje por nuestros momentos juntos</p>
+            <button class="btn-scroll">Descubre nuestra historia</button>
+        </div>
+    </section>
+
+    <!-- Sección 2: Nuestra Historia -->
+    <section id="historia">
+        <h2 data-aos="fade-up">Nuestra Historia</h2>
+        <div class="timeline">
+            <!-- Momento 1 -->
+            <div class="momento" data-aos="fade-right">
+                <div class="fecha">Primer encuentro</div>
+                <div class="contenido-momento">
+                    <img src="imagenes/2.jpg" alt="Primer encuentro">
+                    <p>Aquel día en que nuestras miradas se cruzaron por primera vez, supe que algo especial comenzaba.</p>
+                </div>
+            </div>
+            
+            <!-- Momento 2 -->
+            <div class="momento" data-aos="fade-left">
+                <div class="fecha">Nuestra primera cita</div>
+                <div class="contenido-momento">
+                    <img src="imagenes/3.jpg" alt="Primera cita">
+                    <p>Las mariposas, las risas y ese primer café que se convirtió en horas de conversación.</p>
+                </div>
+            </div>
+            
+            <!-- Momento 3 -->
+            <div class="momento" data-aos="fade-right">
+                <div class="fecha">Aventuras juntos</div>
+                <div class="contenido-momento">
+                    <img src="imagenes/4.jpg" alt="Aventuras">
+                    <p>Cada viaje, cada paseo, cada momento a tu lado se convierte en una aventura inolvidable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 3: Galería de Fotos -->
+    <section id="galeria" class="parallax">
+        <div class="parallax-bg" style="background-image: url('imagenes/5.jpg');"></div>
+        <h2 data-aos="fade-up">Momentos</h2>
+        <div class="contenedor-galeria">
+            <div class="foto" data-aos="zoom-in">
+                <img src="imagenes/6.jpg" alt="Momento especial 1">
+            </div>
+            <div class="foto" data-aos="zoom-in" data-aos-delay="100">
+                <img src="imagenes/7.jpg" alt="Momento especial 2">
+            </div>
+            <div class="foto" data-aos="zoom-in" data-aos-delay="200">
+                <img src="imagenes/8.jpg" alt="Momento especial 3">
+            </div>
+            <div class="foto" data-aos="zoom-in" data-aos-delay="300">
+                <img src="imagenes/9.jpg" alt="Momento especial 4">
+            </div>
+        </div>
+        <button id="btn-florecer" class="btn-florecer">Haz florecer esta página</button>
+    </section>
+
+    <!-- Sección 4: Mensaje Final -->
+    <section id="mensaje-final">
+        <div class="contenido-mensaje" data-aos="fade-up">
+            <h2>BUBII</h2>
+            <p>“Yo sé que un día de estos me voy a levantar y te voy a encontrar en mi placard.”</p>
+            <button id="btn-cancion" class="btn-cancion">tu canción</button>
+            <audio id="cancion" src="https://www.youtube.com/watch?v=s1QCL9AGbO0"></audio>
+        </div>
+    </section>
+
+    <div id="petalos-container"></div>
+    <div id="flores-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

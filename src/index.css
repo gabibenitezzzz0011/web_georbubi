@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Pacifico&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  --color-rosa: #ffcad4;
+  --color-rosa-oscuro: #f4acb7;
+  --color-lila: #d8bbff;
+  --color-lila-oscuro: #c9a0dc;
+  --color-blanco: #fff;
+  --color-dorado: #d4af37;
+  --color-dorado-oscuro: #c09c2c;
+  --fuente-romantica: 'Great Vibes', cursive;
+  --fuente-titulo: 'Dancing Script', cursive;
+  --fuente-texto: 'Montserrat', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  background-color: #fff9f9;
+  color: #333;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulo);
+  color: #333;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--fuente-texto);
+}
+
+img {
+  max-width: 100%;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes caida {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+@keyframes florecer {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 1;
+  }
+} 
