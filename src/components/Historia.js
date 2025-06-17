@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HistoriaSection = styled.section`
   min-height: 100vh;
-  background-color: var(--color-blanco);
+  background-color: var(--color-negro-fondo);
   padding: 100px 0;
   position: relative;
   overflow: hidden;
@@ -22,7 +22,9 @@ const Title = styled(motion.div)`
   
   h2 {
     font-size: 3.5rem;
-    color: var(--color-rosa-oscuro);
+    /* color: var(--color-rosa-oscuro); // Will inherit from global var(--color-blanco-texto) or use theme */
+    /* Forcing specific color if desired: */
+    color: var(--color-celeste-pastel);
     margin-bottom: 20px;
     
     @media (max-width: 768px) {
@@ -32,7 +34,7 @@ const Title = styled(motion.div)`
   
   .subtitle {
     font-size: 1.2rem;
-    color: #666;
+    color: var(--color-gris-texto);
     max-width: 600px;
     margin: 0 auto;
   }
@@ -47,7 +49,7 @@ const TimelineContainer = styled.div`
     content: '';
     position: absolute;
     width: 6px;
-    background: linear-gradient(to bottom, var(--color-rosa), var(--color-lila));
+    background: linear-gradient(to bottom, var(--color-azul-principal), var(--color-celeste-pastel));
     top: 0;
     bottom: 0;
     left: 50%;
@@ -94,12 +96,12 @@ const TimelineItem = styled(motion.div)`
     position: absolute;
     width: 25px;
     height: 25px;
-    background-color: var(--color-rosa-oscuro);
-    border: 4px solid var(--color-lila);
+    background-color: var(--color-azul-principal);
+    border: 4px solid var(--color-celeste-pastel);
     border-radius: 50%;
     top: 15px;
     z-index: 1;
-    box-shadow: 0 0 0 4px rgba(244, 172, 183, 0.3);
+    box-shadow: 0 0 0 4px rgba(41, 121, 255, 0.3); /* Derived from --color-azul-principal #2979ff */
     
     @media (max-width: 768px) {
       left: 15px !important;
@@ -132,7 +134,7 @@ const TimelineDate = styled.div`
   position: absolute;
   top: -30px;
   font-family: var(--fuente-romantica);
-  color: var(--color-dorado);
+  color: var(--color-celeste-pastel);
   font-size: 1.8rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   
@@ -146,8 +148,8 @@ const DecorationElement = styled.div`
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--color-rosa) 0%, transparent 70%);
-  opacity: 0.5;
+  background: radial-gradient(circle, var(--color-azul-principal) 0%, transparent 70%);
+  opacity: 0.5; /* Keep opacity or adjust if needed, e.g., 0.2 for darker theme */
   z-index: -1;
 `;
 

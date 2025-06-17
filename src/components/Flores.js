@@ -25,26 +25,14 @@ function Flores() {
     
     // Definir tipos de flores
     const tiposFlores = [
-      {
-        color: '#ffcad4',
-        bordeColor: '#f4acb7',
-        petalos: 5
-      },
-      {
-        color: '#d8bbff',
-        bordeColor: '#c9a0dc',
-        petalos: 6
-      },
-      {
-        color: '#d4af37',
-        bordeColor: '#c09c2c',
-        petalos: 8
-      }
+      { color: 'var(--color-celeste-pastel)', bordeColor: 'var(--color-blanco-texto)', petalos: 7, centroColor: 'var(--color-azul-principal)' },
+      { color: 'var(--color-azul-principal)', bordeColor: 'var(--color-celeste-pastel)', petalos: 5, centroColor: 'var(--color-blanco-texto)' },
+      { color: 'rgba(255, 255, 255, 0.8)', bordeColor: 'var(--color-celeste-pastel)', petalos: 6, centroColor: 'var(--color-azul-principal)' }
     ];
     
     // Crear una flor SVG
     const crearFlorSVG = (tipo) => {
-      const { color, bordeColor, petalos } = tipo;
+      const { color, bordeColor, petalos, centroColor } = tipo; // Added centroColor
       
       // Crear elemento SVG
       const svgNS = "http://www.w3.org/2000/svg";
@@ -53,35 +41,68 @@ function Flores() {
       svg.setAttribute('width', '100%');
       svg.setAttribute('height', '100%');
       
-      // Crear centro de la flor
-      const centro = document.createElementNS(svgNS, "circle");
-      centro.setAttribute('cx', '50');
-      centro.setAttribute('cy', '50');
-      centro.setAttribute('r', '12');
-      centro.setAttribute('fill', bordeColor);
-      svg.appendChild(centro);
-      
-      // Crear pétalos
       const anguloIncremento = (2 * Math.PI) / petalos;
-      
+
+      // Capa de pétalos trasera (más pequeña, ligeramente desfasada)
+      const radioCapaTrasera = 20;
+      const rxTrasero = 15;
+      const ryTrasero = 8;
+      for (let i = 0; i < petalos; i++) {
+        const angulo = i * anguloIncremento + (anguloIncremento / 3); // Desfase
+        const x1 = 50 + radioCapaTrasera * Math.cos(angulo);
+        const y1 = 50 + radioCapaTrasera * Math.sin(angulo);
+
+        const petaloTrasero = document.createElementNS(svgNS, "ellipse");
+        petaloTrasero.setAttribute('cx', x1);
+        petaloTrasero.setAttribute('cy', y1);
+        petaloTrasero.setAttribute('rx', `${rxTrasero}`);
+        petaloTrasero.setAttribute('ry', `${ryTrasero}`);
+        petaloTrasero.setAttribute('fill', color); // Mismo color base
+        petaloTrasero.setAttribute('fill-opacity', '0.6'); // Más transparente
+        petaloTrasero.setAttribute('stroke', bordeColor);
+        petaloTrasero.setAttribute('stroke-width', '0.5');
+        petaloTrasero.setAttribute('transform', `rotate(${(angulo * 180) / Math.PI + 90}, ${x1}, ${y1})`);
+        svg.appendChild(petaloTrasero);
+      }
+
+      // Crear pétalos principales
+      const radioPrincipal = 30;
+      const rxPrincipal = 18;
+      const ryPrincipal = 10;
       for (let i = 0; i < petalos; i++) {
         const angulo = i * anguloIncremento;
-        const x1 = 50 + 30 * Math.cos(angulo);
-        const y1 = 50 + 30 * Math.sin(angulo);
+        const x1 = 50 + radioPrincipal * Math.cos(angulo);
+        const y1 = 50 + radioPrincipal * Math.sin(angulo);
         
         const petalo = document.createElementNS(svgNS, "ellipse");
         petalo.setAttribute('cx', x1);
         petalo.setAttribute('cy', y1);
-        petalo.setAttribute('rx', '18');
-        petalo.setAttribute('ry', '10');
+        petalo.setAttribute('rx', `${rxPrincipal}`);
+        petalo.setAttribute('ry', `${ryPrincipal}`);
         petalo.setAttribute('fill', color);
         petalo.setAttribute('stroke', bordeColor);
         petalo.setAttribute('stroke-width', '1');
         petalo.setAttribute('transform', `rotate(${(angulo * 180) / Math.PI + 90}, ${x1}, ${y1})`);
-        
         svg.appendChild(petalo);
       }
       
+      // Crear centro de la flor (encima de todo)
+      const centro = document.createElementNS(svgNS, "circle");
+      centro.setAttribute('cx', '50');
+      centro.setAttribute('cy', '50');
+      centro.setAttribute('r', '12');
+      centro.setAttribute('fill', centroColor || bordeColor); // Usar centroColor o fallback a bordeColor
+      svg.appendChild(centro);
+
+      // Pequeño detalle en el centro
+      const detalleCentro = document.createElementNS(svgNS, "circle");
+      detalleCentro.setAttribute('cx', '50');
+      detalleCentro.setAttribute('cy', '50');
+      detalleCentro.setAttribute('r', '6');
+      detalleCentro.setAttribute('fill', color);
+      detalleCentro.setAttribute('fill-opacity', '0.5');
+      svg.appendChild(detalleCentro);
+
       return svg;
     };
     
@@ -126,7 +147,7 @@ function Flores() {
           florContainer.style.width = `${tamaño}px`;
           florContainer.style.height = `${tamaño}px`;
           florContainer.style.left = `${posX}px`;
-          florContainer.style.bottom = `-${tamaño}px`;
+          florContainer.style.bottom = `-${tamaño * 1.5}px`; // Ensure fully hidden
           florContainer.style.opacity = '0';
           florContainer.style.transformOrigin = 'center bottom';
           
@@ -142,13 +163,14 @@ function Flores() {
           
           timeline
             .to(florContainer, {
-              bottom: `${Math.random() * 20 + 10}%`,
+              bottom: `${Math.random() * 20 + 10}%`, // Keep random height
               opacity: 1,
-              duration: 1.5,
-              ease: 'power2.out'
+              rotation: `random(-15, 15)`, // Add random rotation
+              duration: 1.8, // New duration
+              ease: 'back.out(1.7)' // New ease
             })
             .to(florContainer, {
-              rotation: Math.random() * 10 - 5,
+              rotation: `random(-10, 10)`, // Keep sway, adjust range if needed
               duration: 2,
               repeat: -1,
               yoyo: true,
@@ -174,8 +196,8 @@ function Flores() {
             opacity: 0,
             scale: 0.8,
             duration: 1.5,
-            delay: 8,
-            ease: 'power2.in',
+            delay: 12, // Increased delay
+            ease: 'power2.inOut', // Changed ease
             onComplete: () => {
               if (isMounted && currentContainerRef && florContainer.parentNode === currentContainerRef) {
                 currentContainerRef.removeChild(florContainer);
@@ -191,7 +213,7 @@ function Flores() {
           });
           
           animationsRef.current.push(timeline);
-        }, i * 100);
+        }, i * 200); // Increased stagger
       }
     };
     

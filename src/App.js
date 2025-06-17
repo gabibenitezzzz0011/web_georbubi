@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import Header from './components/Header';
 import Portada from './components/Portada';
 import Historia from './components/Historia';
-import Galeria from './components/Galeria';
+import Galeria from './components/Galeria'; // This will be MomentosEternos
+import Cositas from './components/Cositas'; // Import new component
 import MensajeFinal from './components/MensajeFinal';
 import Petalos from './components/Petalos';
 import Flores from './components/Flores';
@@ -60,9 +61,13 @@ function App() {
         </Element>
         
         <Element name="galeria">
-          <Galeria onFlorecer={handleFlorecer} onMostrarFloresAmarillas={handleMostrarFloresAmarillas} />
+          <Galeria />
         </Element>
         
+        <Element name="cositas"> {/* Add Cositas section */}
+          <Cositas />
+        </Element>
+
         <Element name="mensaje">
           <MensajeFinal
             onReproducir={toggleReproduccion}

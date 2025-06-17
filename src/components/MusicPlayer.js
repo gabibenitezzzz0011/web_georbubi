@@ -15,7 +15,7 @@ const AudioIndicator = styled(motion.div)`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: var(--color-dorado);
+  background-color: var(--color-azul-principal);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +32,7 @@ const AudioIndicator = styled(motion.div)`
     right: -5px;
     bottom: -5px;
     border-radius: 50%;
-    border: 2px solid var(--color-dorado);
+    border: 2px solid var(--color-azul-principal);
     opacity: 0;
     animation: ${props => props.reproduciendo ? 'pulse 2s infinite' : 'none'};
   }
@@ -78,7 +78,7 @@ function MusicPlayer({ reproduciendo }) {
       // Crear elemento de audio
       if (!audioRef.current) {
         audioElement = new Audio();
-        audioElement.src = '/sound/cancion.mp3'; // Cambiado a una ruta local
+        audioElement.src = '/sound/Heavenly.mp3';
         audioElement.loop = true;
         audioElement.volume = 0.7;
         audioRef.current = audioElement;

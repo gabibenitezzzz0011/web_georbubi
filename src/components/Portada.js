@@ -37,11 +37,7 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
+  background: linear-gradient(135deg, rgba(18, 18, 18, 0.7) 0%, rgba(18, 18, 18, 0.4) 100%);
   z-index: -1;
 `;
 
@@ -58,7 +54,7 @@ const Title = styled(Typography)`
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   
   .highlight {
-    color: var(--color-rosa);
+    color: var(--color-celeste-pastel);
     font-family: var(--fuente-romantica);
   }
 `;
@@ -142,11 +138,11 @@ function Portada() {
   useEffect(() => {
     // Efecto de máquina de escribir
     const typed = new Typed(typedRef.current, {
-      strings: ['Con Amor'],
+      strings: ['miro las estrellas pa\\\' encontrarte'],
       typeSpeed: 80,
       startDelay: 1500,
       showCursor: true,
-      cursorChar: '❤️',
+      cursorChar: '✨',
       loop: false
     });
     
@@ -166,7 +162,7 @@ function Portada() {
     const createFloatingHearts = () => {
       if (!heartsContainerRef.current) return;
       
-      const colors = ['#ffcad4', '#f4acb7', '#d8bbff', '#ffffff'];
+      const colors = ['var(--color-celeste-pastel)', 'var(--color-azul-principal)', 'var(--color-gris-azulado)', '#FFFFFF'];
       
       for (let i = 0; i < 15; i++) {
         const heart = document.createElement('div');
@@ -225,12 +221,12 @@ function Portada() {
         transition={{ duration: 1 }}
       >
         <Title variant="h1" ref={titleRef}>
-          Para <span className="highlight">Mi Amor</span>, <br />
+          Para <span className="highlight">Geor</span>, <br />
           <span ref={typedRef}></span>
         </Title>
         
         <Subtitle variant="h5">
-          Un viaje por nuestros momentos juntos
+          No soy un extraño aquí.
         </Subtitle>
         
         <StyledButton
@@ -252,7 +248,7 @@ function Portada() {
             }
           }}
         >
-          Descubre nuestra historia
+          Clickea y vuela.
         </StyledButton>
       </ContentWrapper>
       

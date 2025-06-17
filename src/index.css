@@ -1,16 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Pacifico&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
-  --color-rosa: #ffcad4;
-  --color-rosa-oscuro: #f4acb7;
-  --color-lila: #d8bbff;
-  --color-lila-oscuro: #c9a0dc;
-  --color-blanco: #fff;
-  --color-dorado: #d4af37;
-  --color-dorado-oscuro: #c09c2c;
+  /* Old color variables removed */
   --fuente-romantica: 'Great Vibes', cursive;
   --fuente-titulo: 'Dancing Script', cursive;
   --fuente-texto: 'Montserrat', sans-serif;
+
+  /* New color variables */
+  --color-azul-principal: #2979ff;
+  --color-azul-oscuro: #1976D2;
+  --color-celeste-pastel: #ADD8E6;
+  --color-gris-azulado: #607d8b;
+  --color-negro-fondo: #121212;
+  --color-negro-papel: #1e1e1e;
+  --color-blanco-texto: #FFFFFF;
+  --color-gris-texto: #b0bec5;
 }
 
 * {
@@ -25,8 +29,8 @@ html {
 
 body {
   font-family: var(--fuente-texto);
-  background-color: #fff9f9;
-  color: #333;
+  background-color: var(--color-negro-fondo);
+  color: var(--color-blanco-texto);
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -34,7 +38,7 @@ body {
 
 h1, h2, h3 {
   font-family: var(--fuente-titulo);
-  color: #333;
+  color: var(--color-blanco-texto);
 }
 
 button {

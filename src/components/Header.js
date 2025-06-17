@@ -11,29 +11,29 @@ const HeaderContainer = styled(AppBar)`
   transition: all 0.5s ease;
   
   &.scrolled {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(18, 18, 18, 0.85); /* Updated */
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow might need adjustment for dark bg */
   }
 `;
 
 const Logo = styled.div`
   font-family: var(--fuente-romantica);
   font-size: 1.8rem;
-  color: ${props => props.scrolled ? 'var(--color-rosa-oscuro)' : 'var(--color-blanco)'};
+  color: ${props => props.scrolled ? 'var(--color-celeste-pastel)' : 'var(--color-blanco)'}; /* Updated scrolled color */
   text-shadow: ${props => props.scrolled ? 'none' : '1px 1px 2px rgba(0,0,0,0.5)'};
   transition: all 0.5s ease;
 `;
 
 const NavItem = styled(Button)`
   margin: 0 10px;
-  color: ${props => props.scrolled ? 'var(--color-rosa-oscuro)' : 'var(--color-blanco)'};
+  color: ${props => props.scrolled ? 'var(--color-blanco-texto)' : 'var(--color-blanco)'}; /* Updated scrolled color */
   font-family: var(--fuente-texto);
   font-weight: 500;
   text-shadow: ${props => props.scrolled ? 'none' : '1px 1px 2px rgba(0,0,0,0.5)'};
   
   &:hover {
-    background: ${props => props.scrolled ? 'rgba(244, 172, 183, 0.1)' : 'rgba(255, 255, 255, 0.1)'};
+    background: ${props => props.scrolled ? 'rgba(41, 121, 255, 0.1)' : 'rgba(255, 255, 255, 0.1)'}; /* Updated scrolled hover */
   }
 `;
 
@@ -46,7 +46,7 @@ const MobileNavItem = styled(ListItem)`
 const DrawerContent = styled(Box)`
   width: 250px;
   height: 100%;
-  background: linear-gradient(135deg, var(--color-rosa) 0%, var(--color-lila) 100%);
+  background: linear-gradient(135deg, var(--color-negro-papel) 0%, var(--color-negro-fondo) 100%); /* Updated */
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -89,7 +89,8 @@ function Header() {
   const navItems = [
     { name: 'Inicio', to: 'portada' },
     { name: 'Nuestra Historia', to: 'historia' },
-    { name: 'Galería', to: 'galeria' },
+    { name: 'Momentos', to: 'momentos-eternos' }, // Updated name and to value
+    { name: 'Mis Cositas', to: 'cositas' },
     { name: 'Mensaje', to: 'mensaje' }
   ];
 

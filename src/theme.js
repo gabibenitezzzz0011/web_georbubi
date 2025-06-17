@@ -3,30 +3,25 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#f4acb7',
-      light: '#ffcad4',
-      dark: '#e38c99',
-      contrastText: '#ffffff',
+      main: '#2979ff', // Blue A400
+      light: '#ADD8E6', // Pastel Light Blue
+      dark: '#1976D2', // Darker Blue for contrast
+      contrastText: '#FFFFFF',
     },
     secondary: {
-      main: '#d8bbff',
-      light: '#e6d4ff',
-      dark: '#c9a0dc',
-      contrastText: '#333333',
+      main: '#607d8b', // Blue Grey
+      light: '#cfd8dc', // Light Blue Grey
+      dark: '#455a64', // Dark Blue Grey
+      contrastText: '#FFFFFF',
     },
-    accent: {
-      main: '#d4af37',
-      light: '#e5c860',
-      dark: '#c09c2c',
-      contrastText: '#ffffff',
-    },
+    // accent palette removed
     background: {
-      default: '#fff9f9',
-      paper: '#ffffff',
+      default: '#121212', // Dark background
+      paper: '#1e1e1e', // Slightly lighter dark for paper
     },
     text: {
-      primary: '#333333',
-      secondary: '#666666',
+      primary: '#FFFFFF', // White text on dark background
+      secondary: '#b0bec5', // Light grey text
     },
   },
   typography: {

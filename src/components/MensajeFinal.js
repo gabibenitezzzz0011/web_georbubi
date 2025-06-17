@@ -12,7 +12,7 @@ gsap.registerPlugin(TextPlugin);
 
 const MensajeSection = styled.section`
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--color-rosa) 0%, var(--color-lila) 100%);
+  background: linear-gradient(135deg, var(--color-negro-fondo) 0%, var(--color-negro-papel) 100%);
   padding: 100px 0;
   position: relative;
   overflow: hidden;
@@ -40,9 +40,9 @@ const Heart = styled.div`
 const ContentCard = styled(motion(Paper))`
   padding: 50px;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  background-color: var(--color-negro-papel);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); // Shadow might need adjustment for dark theme
+  backdrop-filter: blur(10px); // Keep for effect
   max-width: 800px;
   width: 100%;
   position: relative;
@@ -56,7 +56,7 @@ const ContentCard = styled(motion(Paper))`
 const Title = styled(motion(Typography))`
   text-align: center;
   margin-bottom: 30px;
-  color: var(--color-rosa-oscuro);
+  color: var(--color-celeste-pastel);
   font-family: var(--fuente-romantica);
   position: relative;
   display: inline-block;
@@ -68,7 +68,7 @@ const Title = styled(motion(Typography))`
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, transparent, var(--color-rosa-oscuro), transparent);
+    background: linear-gradient(to right, transparent, var(--color-celeste-pastel), transparent);
   }
 `;
 
@@ -77,9 +77,10 @@ const MessageText = styled(motion(Typography))`
   margin-bottom: 40px;
   line-height: 1.8;
   font-size: 1.1rem;
+  white-space: pre-line; /* To render \n as line breaks */
   
   .highlight {
-    color: var(--color-rosa-oscuro);
+    color: var(--color-azul-principal);
     font-weight: 500;
   }
 `;
@@ -128,14 +129,15 @@ function MensajeFinal({ onReproducir, reproduciendo, onShowYellowFlowers }) { //
       
       // Animación de texto con GSAP
       if (textRef.current) {
-        const text = textRef.current.innerHTML;
-        textRef.current.innerHTML = '';
+        // New text content for GSAP animation
+        const mensajePrincipal = "Día a día aprendiendo a ser\nMiro hacia atrás\nY todo el camino hecho\nLo que pudo ser y lo que fue\nMi oportunidad\nDe comenzar de nuevo\nY lo demás\nFrancamente no importa\n\n¿Quién fui todo este tiempo? No sé\n¿Quién soy o seré?\n¿Habré cumplido un sueño?\nIntentando la felicidad\nA prueba y error\nLa vida es un momento\nY lo demás\nFrancamente no importa\n\nTe miro fijo y me sonreís\nNo pierdo un día lejos de ti\nMi chance es hoy\nMiro tus ojos y me veo ahí\nAprovechando cada ocasión\nMi chance es hoy\n\nTantas cosas que habré hecho bien\nTantas que hice mal\nY que ni ahí me entero\nCuánto que desperdicié sin ver\nQue estuviste ahí\nConmigo todo el tiempo\nY hoy lo demás\nFrancamente no importa\n\nTe miro fijo y me sonreís\nNo pierdo un día lejos de ti\nMi chance es hoy\nMiro tus ojos y me veo ahí\nAprovechando cada ocasión\nMi chance es hoy\n\nY hoy lo demás\nFrancamente no importa\nTe miro fijo y me sonreís\nNo pierdo un día lejos de ti\nMi chance es hoy\nMiro tus ojos y me veo ahí\nAprovechando cada ocasión\nMi chance es hoy\n\nTe miro fijo y me sonreís\nNo pierdo un día lejos de ti\nMi chance es hoy\nMiro tus ojos y me veo ahí\nAprovechando cada ocasión\nMi chance es hoy\n\nTe miro fijo y me sonreís\nNo pierdo un día lejos de ti\nMi chance es hoy\nMiro tus ojos y me veo ahí\nAprovechando cada ocasión\nMi chance es hoy";
+        textRef.current.innerHTML = ''; // Clear existing HTML if any (though GSAP text plugin might do this)
         
         gsap.to(textRef.current, {
-          duration: 3,
+          duration: 15, // Increased duration for longer text
           text: {
-            value: text,
-            delimiter: ' '
+            value: mensajePrincipal,
+            delimiter: ' ' // Could use '' for character by character, or ' ' for word by word
           },
           ease: "none",
           delay: 0.5
@@ -281,15 +283,12 @@ function MensajeFinal({ onReproducir, reproduciendo, onShowYellowFlowers }) { //
             animate={controls}
           >
           <Title variant="h2" variants={itemVariants}>
-            Mi Amor Por Ti
+            Como me siento
           </Title>
           
+          {/* MessageText will be populated by GSAP with lyrics. Initial children (if any) will be replaced. */}
           <MessageText variant="body1" variants={itemVariants} ref={textRef}>
-            Cada día a tu lado es un <span className="highlight">regalo</span> que atesoro. Tu sonrisa ilumina mis mañanas, tu voz calma mis noches. En cada latido de mi corazón está escrito tu nombre, en cada sueño aparece tu rostro. 
-            <br /><br />
-            Te amo más allá de las palabras, más allá del tiempo, más allá de todo lo imaginable. Eres mi presente y mi futuro, mi <span className="highlight">compañera de vida</span>, mi amor eterno.
-            <br /><br />
-            Juntos hemos creado recuerdos hermosos, y juntos seguiremos escribiendo nuestra historia de amor, día tras día, año tras año, por toda la <span className="highlight">eternidad</span>.
+            {/* Placeholder content can be put here, but GSAP will overwrite it */}
           </MessageText>
           
           <ButtonWrapper variants={itemVariants}>
@@ -300,9 +299,9 @@ function MensajeFinal({ onReproducir, reproduciendo, onShowYellowFlowers }) { //
               onClick={onReproducir}
               startIcon={reproduciendo ? <FaPause className="icon" /> : <FaMusic className="icon" />}
               sx={{
-                backgroundColor: 'var(--color-dorado)',
+                backgroundColor: 'var(--color-azul-principal)',
                 '&:hover': {
-                  backgroundColor: 'var(--color-dorado-oscuro)'
+                  backgroundColor: 'var(--color-azul-oscuro)'
                 },
                 marginRight: '10px'
               }}
@@ -312,13 +311,13 @@ function MensajeFinal({ onReproducir, reproduciendo, onShowYellowFlowers }) { //
             
             <Button
               variant="contained"
-              color="primary"
+              color="secondary" // Using secondary for a different look from primary MusicButton
               size="large"
               onClick={onShowYellowFlowers} // Use prop
               sx={{
-                backgroundColor: 'var(--color-rosa-oscuro)',
+                backgroundColor: 'var(--color-gris-azulado)',
                 '&:hover': {
-                  backgroundColor: 'var(--color-rosa)'
+                  backgroundColor: '#455a64' // Darker shade of gris-azulado (secondary.dark)
                 }
               }}
             >

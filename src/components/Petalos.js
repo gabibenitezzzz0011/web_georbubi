@@ -32,7 +32,7 @@ function Petalos() {
     const currentContainerRef = containerRef.current;
     if (!currentContainerRef) return;
     
-    const colors = ['#ffcad4', '#f4acb7', '#d8bbff', '#f8e9e9', '#ffd1dc'];
+    const colors = ['var(--color-celeste-pastel)', 'var(--color-azul-principal)', '#FFFFFF', 'rgba(173, 216, 230, 0.7)', 'rgba(41, 121, 255, 0.7)'];
     const createPetalos = () => {
       if (!isMounted || !currentContainerRef) return;
       
@@ -72,7 +72,8 @@ function Petalos() {
           petalo.style.left = `${posX}px`;
           petalo.style.top = '-50px';
           petalo.style.backgroundColor = color;
-          petalo.style.borderRadius = '50% 0 50% 0';
+          petalo.style.borderRadius = '50% 0 50% 0'; // Fallback/base shape
+          petalo.style.clipPath = 'ellipse(40% 50% at 50% 50%)'; // New shape
           petalo.style.transform = `rotate(${rotacion}deg) scale(${escala})`;
           petalo.style.position = 'absolute';
           petalo.style.opacity = '0';
@@ -90,8 +91,8 @@ function Petalos() {
             })
             .to(petalo, {
               y: window.innerHeight + 100,
-              x: `+=${Math.random() * 200 - 100}`,
-              rotation: `+=${Math.random() * 360 - 180}`,
+              x: `+=${Math.random() * 200 - 100}`, // This horizontal drift can remain
+              rotation: `random(-720, 720)`, // Enhanced rotation
               duration: duracion,
               ease: 'power1.inOut',
               onComplete: () => {
@@ -108,23 +109,26 @@ function Petalos() {
               }
             }, '-=0.5');
           
-          // Añadir oscilación horizontal
+          // Añadir oscilación horizontal (larger range)
           gsap.to(petalo, {
-            x: `+=${Math.random() * 100 - 50}`,
-            duration: Math.random() * 3 + 2,
+            x: `+=${Math.random() * 150 - 75}`,
+            duration: Math.random() * 3 + 2, // Keep random duration for variety
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+          });
+
+          // Add subtle scaling animation
+          gsap.to(petalo, {
+            scale: `random(0.8, 1.2)`, // GSAP random syntax
+            duration: `random(3, 7)`,
             repeat: -1,
             yoyo: true,
             ease: 'sine.inOut'
           });
           
-          // Añadir rotación continua
-          gsap.to(petalo, {
-            rotation: `+=${Math.random() * 360}`,
-            duration: Math.random() * 10 + 5,
-            repeat: -1,
-            ease: 'sine.inOut'
-          });
-          
+          // Removed separate continuous rotation as main timeline now handles more rotation
+
           animationsRef.current.push(timeline);
         }, i * 300);
       }
