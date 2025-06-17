@@ -149,11 +149,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Efecto parallax al hacer scroll
-    window.addEventListener('scroll', function() {
-        const parallaxElements = document.querySelectorAll('.parallax-bg');
-        parallaxElements.forEach(element => {
-            const scrollPosition = window.pageYOffset;
-            element.style.transform = `translateY(${scrollPosition * 0.5}px)`;
-        });
-    });
+    // window.addEventListener('scroll', function() {
+    //     const parallaxElements = document.querySelectorAll('.parallax-bg');
+    //     parallaxElements.forEach(element => {
+    //         const scrollPosition = window.pageYOffset;
+    //         element.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+    //     });
+    // });
 }); 

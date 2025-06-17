@@ -30,7 +30,7 @@ const ParallaxBackground = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/imagenes/5.jpg');
+  background-image: url('/imagenes/our-moments/our-moments-bg.jpg'); /* Different BG for Our Moments */
   background-size: cover;
   background-position: center;
   z-index: -2;
@@ -44,8 +44,8 @@ const Overlay = styled.div`
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.5) 100%
+    rgba(255, 105, 180, 0.6) 0%, /* Hot pinkish overlay */
+    rgba(255, 182, 193, 0.4) 100% /* Lighter pink overlay */
   );
   z-index: -1;
 `;
@@ -57,9 +57,10 @@ const Title = styled(motion.div)`
   
   h2 {
     font-size: 3.5rem;
-    color: var(--color-blanco);
+    color: #FFFFFF; /* Pure White title */
+    font-family: 'Pacifico', cursive; /* Playful, cursive font */
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     
     @media (max-width: 768px) {
       font-size: 2.8rem;
@@ -68,10 +69,11 @@ const Title = styled(motion.div)`
   
   .subtitle {
     font-size: 1.2rem;
-    color: var(--color-blanco);
+    color: #F8F8F8; /* Very light grey subtitle */
+    font-family: 'Quicksand', sans-serif; /* Soft, rounded font */
     max-width: 600px;
     margin: 0 auto;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   }
 `;
 
@@ -118,19 +120,19 @@ const StyledSwiper = styled(Swiper)`
   .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
-    background-color: var(--color-rosa);
-    opacity: 0.7;
+    background-color: #FFB6C1; /* LightPink bullets */
+    opacity: 0.75;
     
     &-active {
       opacity: 1;
-      background-color: var(--color-rosa-oscuro);
+      background-color: #FF69B4; /* HotPink active bullet */
     }
   }
   
   .swiper-button-next,
   .swiper-button-prev {
-    color: var(--color-rosa-oscuro);
-    background-color: rgba(255, 255, 255, 0.8);
+    color: #FF1493; /* DeepPink navigation arrows */
+    background-color: rgba(255, 240, 245, 0.85); /* LavenderBlush background for nav */
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -206,37 +208,37 @@ const FloreceButton = styled(Button)`
 const fotos = [
   {
     id: 1,
-    imagen: '/imagenes/6.jpg',
+    imagen: '/imagenes/our-moments/6.jpg',
     titulo: 'Momentos Especiales',
     descripcion: 'Los pequeños instantes que hacen grande nuestra historia'
   },
   {
     id: 2,
-    imagen: '/imagenes/7.jpg',
+    imagen: '/imagenes/our-moments/7.jpg',
     titulo: 'Juntos',
     descripcion: 'Cada día es una nueva aventura a tu lado'
   },
   {
     id: 3,
-    imagen: '/imagenes/8.jpg',
+    imagen: '/imagenes/our-moments/8.jpg',
     titulo: 'Recuerdos',
     descripcion: 'Memorias que atesoramos en nuestro corazón'
   },
   {
     id: 4,
-    imagen: '/imagenes/9.jpg',
+    imagen: '/imagenes/our-moments/9.jpg',
     titulo: 'Amor Eterno',
     descripcion: 'Un sentimiento que crece con cada amanecer'
   },
   {
     id: 5,
-    imagen: '/imagenes/1.jpg',
+    imagen: '/imagenes/our-moments/1.jpg',
     titulo: 'Nuestro Camino',
     descripcion: 'Construyendo sueños paso a paso'
   },
   {
     id: 6,
-    imagen: '/imagenes/2.jpg',
+    imagen: '/imagenes/our-moments/2.jpg',
     titulo: 'Conexión',
     descripcion: 'Dos almas que se encontraron para no separarse'
   }
@@ -251,8 +253,11 @@ function Galeria({ onFlorecer, onMostrarFloresAmarillas }) {
   // Efecto parallax con GSAP
   useEffect(() => {
     if (parallaxRef.current) {
+      // Ensure the parallax background uses an image from the correct folder if needed.
+      // For now, it's set to /imagenes/our-moments/5.jpg directly in ParallaxBackground styled component.
       gsap.to(parallaxRef.current, {
-        y: '15%',
+        y: '20%',
+        x: '5%', // Added horizontal movement
         ease: 'power1.out',
         scrollTrigger: {
           trigger: parallaxRef.current.parentElement,
@@ -317,7 +322,7 @@ function Galeria({ onFlorecer, onMostrarFloresAmarillas }) {
       
       <Container>
         <Title ref={titleRef}>
-          <Typography variant="h2">Nuestros Momentos</Typography>
+          <Typography variant="h2">Our Moments</Typography> {/* Ensuring title is "Our Moments" */}
           <Typography className="subtitle">
             Una colección de recuerdos que hemos creado juntos
           </Typography>

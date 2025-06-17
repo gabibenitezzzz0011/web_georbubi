@@ -5,6 +5,10 @@ import Header from './components/Header';
 import Portada from './components/Portada';
 import Historia from './components/Historia';
 import Galeria from './components/Galeria';
+import GeorAlbum from './components/GeorAlbum';
+import FamilyAlbum from './components/FamilyAlbum';
+import JuanGabrielAlbum from './components/JuanGabrielAlbum';
+import FloresAmarillasGitHub from './components/FloresAmarillasGitHub'; // Import new component
 import MensajeFinal from './components/MensajeFinal';
 import Petalos from './components/Petalos';
 import Flores from './components/Flores';
@@ -59,8 +63,24 @@ function App() {
           <Historia />
         </Element>
         
-        <Element name="galeria">
+        <Element name="our-moments"> {/* Updated name for clarity */}
           <Galeria onFlorecer={handleFlorecer} onMostrarFloresAmarillas={handleMostrarFloresAmarillas} />
+        </Element>
+
+        <Element name="geor-album">
+          <GeorAlbum />
+        </Element>
+
+        <Element name="family-album">
+          <FamilyAlbum />
+        </Element>
+
+        <Element name="juangabriel-album">
+          <JuanGabrielAlbum />
+        </Element>
+
+        <Element name="flores-github"> {/* Add new element for GitHub section */}
+          <FloresAmarillasGitHub />
         </Element>
         
         <Element name="mensaje">
