@@ -64,7 +64,11 @@ function App() {
         </Element>
         
         <Element name="mensaje">
-          <MensajeFinal onReproducir={toggleReproduccion} reproduciendo={reproduciendo} />
+          <MensajeFinal
+            onReproducir={toggleReproduccion}
+            reproduciendo={reproduciendo}
+            onShowYellowFlowers={handleMostrarFloresAmarillas}
+          />
         </Element>
         
         {mostrarPetalos && <Petalos />}

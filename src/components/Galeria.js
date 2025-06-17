@@ -252,8 +252,8 @@ function Galeria({ onFlorecer, onMostrarFloresAmarillas }) {
   useEffect(() => {
     if (parallaxRef.current) {
       gsap.to(parallaxRef.current, {
-        y: '30%',
-        ease: 'none',
+        y: '15%',
+        ease: 'power1.out',
         scrollTrigger: {
           trigger: parallaxRef.current.parentElement,
           start: 'top bottom',

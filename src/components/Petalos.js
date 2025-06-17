@@ -93,7 +93,7 @@ function Petalos() {
               x: `+=${Math.random() * 200 - 100}`,
               rotation: `+=${Math.random() * 360 - 180}`,
               duration: duracion,
-              ease: 'none',
+              ease: 'power1.inOut',
               onComplete: () => {
                 if (isMounted && currentContainerRef && petalo.parentNode === currentContainerRef) {
                   currentContainerRef.removeChild(petalo);
