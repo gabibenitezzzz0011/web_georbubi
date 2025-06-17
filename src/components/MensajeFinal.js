@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { FaHeart, FaMusic, FaPause } from 'react-icons/fa';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
-import FloresAmarillas from './FloresAmarillas';
+// Removed FloresAmarillas import
 
 gsap.registerPlugin(TextPlugin);
 
@@ -113,13 +113,13 @@ const FloatingElement = styled(motion.div)`
   opacity: 0.6;
 `;
 
-function MensajeFinal({ onReproducir, reproduciendo }) {
+function MensajeFinal({ onReproducir, reproduciendo, onShowYellowFlowers }) { // Added onShowYellowFlowers
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
   const textRef = useRef(null);
   const heartsRef = useRef(null);
   const floatingElementsRef = useRef([]);
-  const [mostrarFlores, setMostrarFlores] = useState(false);
+  // Removed useState for mostrarFlores
   
   // Animación cuando el componente entra en vista
   useEffect(() => {
@@ -236,13 +236,13 @@ function MensajeFinal({ onReproducir, reproduciendo }) {
   
   return (
     <MensajeSection id="mensaje">
-      {mostrarFlores && <FloresAmarillas visible={mostrarFlores} />}
-      {!mostrarFlores && <BackgroundHearts ref={heartsRef} />}
+      {/* Removed local FloresAmarillas instance */}
+      <BackgroundHearts ref={heartsRef} /> {/* Always visible */}
       
       {/* Elementos decorativos flotantes */}
-      {!mostrarFlores && (
-        <>
-          <FloatingElement
+      {/* Always visible */}
+      <>
+        <FloatingElement
             ref={el => floatingElementsRef.current[0] = el}
             style={{ top: '10%', left: '5%' }}
             initial={{ opacity: 0 }}
@@ -272,10 +272,8 @@ function MensajeFinal({ onReproducir, reproduciendo }) {
             <FaHeart size={30} color="white" />
           </FloatingElement>
         </>
-      )}
-      
-      {!mostrarFlores && (
-        <Container>
+      {/* Removed !mostrarFlores condition for Container */}
+      <Container>
           <ContentCard
             ref={ref}
             variants={cardVariants}
@@ -316,7 +314,7 @@ function MensajeFinal({ onReproducir, reproduciendo }) {
               variant="contained"
               color="primary"
               size="large"
-              onClick={() => setMostrarFlores(true)}
+              onClick={onShowYellowFlowers} // Use prop
               sx={{
                 backgroundColor: 'var(--color-rosa-oscuro)',
                 '&:hover': {

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Para Ti, Con Amor - Página Romántica
 
 Una hermosa página web romántica creada con React y tecnologías modernas para expresar amor de forma especial.
@@ -88,8 +87,4 @@ Este proyecto es de uso personal y no está destinado a distribución comercial 
 
 ---
 
-Creado con ❤️ para expresar amor de la forma más hermosa. 
-=======
-# web-geor
-página web dedicada a una persona super especial
->>>>>>> 9260dee2c32fa04a3b7e9f60303641d842be9dab
+Creado con ❤️ para expresar amor de la forma más hermosa.

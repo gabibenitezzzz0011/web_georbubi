@@ -176,7 +176,7 @@ function Header() {
                 style={{ display: 'inline-block' }}
               >
                 <NavItem 
-                  scrolled={scrolled ? 1 : 0}
+                  scrolled={scrolled}
                   component={ScrollLink}
                   to={item.to}
                   spy={true}

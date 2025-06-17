@@ -152,8 +152,8 @@ function Portada() {
     
     // Parallax con GSAP
     gsap.to(parallaxRef.current, {
-      y: '30%',
-      ease: 'none',
+      y: '15%',
+      ease: 'power1.out',
       scrollTrigger: {
         trigger: parallaxRef.current,
         start: 'top top',
@@ -184,40 +184,14 @@ function Portada() {
         heart.style.left = `${left}%`;
         heart.style.top = '100%';
         heart.style.position = 'absolute';
-        heart.style.transform = 'rotate(45deg)';
-        heart.style.animation = `floatUp ${animationDuration}s linear infinite`;
+        heart.style.transform = 'rotate(45deg)'; // Base rotation for the .heart class to work
+        heart.style.animation = `floatUpEffect ${animationDuration}s linear infinite`; // Use new keyframe
         
-        // Crear pseudo-elementos para formar el corazón
+        // Set CSS variable for the globally defined .heart pseudo-elements
         heart.style.setProperty('--heart-color', color);
         
-        // Añadir pseudo-elementos con CSS
-        const style = document.createElement('style');
-        style.textContent = `
-          .heart:before, .heart:after {
-            content: '';
-            width: 100%;
-            height: 100%;
-            background: var(--heart-color);
-            border-radius: 50%;
-            position: absolute;
-          }
-          .heart:before {
-            left: -50%;
-          }
-          .heart:after {
-            top: -50%;
-          }
-          @keyframes floatUp {
-            0% {
-              transform: translateY(0) rotate(45deg) scale(1);
-            }
-            100% {
-              transform: translateY(-1500px) rotate(${Math.random() * 360}deg) scale(0);
-            }
-          }
-        `;
+        // No longer need to inject <style> tags dynamically
         
-        document.head.appendChild(style);
         heartsContainerRef.current.appendChild(heart);
         
         // Eliminar el corazón después de la animación
@@ -225,9 +199,7 @@ function Portada() {
           if (heart.parentNode === heartsContainerRef.current) {
             heartsContainerRef.current.removeChild(heart);
           }
-          if (style.parentNode === document.head) {
-            document.head.removeChild(style);
-          }
+          // No longer need to remove style tag
         }, animationDuration * 1000);
       }
     };

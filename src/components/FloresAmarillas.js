@@ -20,7 +20,7 @@ const FloresContent = styled.div`
   align-items: center;
   justify-content: center;
   color: yellow;
-  font-family: "Arial Narrow", Arial, sans-serif;
+  font-family: var(--fuente-romantica);
   text-align: center;
 `;
 
